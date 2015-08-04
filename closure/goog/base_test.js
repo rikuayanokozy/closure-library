@@ -839,7 +839,6 @@ function testPartialMultipleCalls() {
   assertArrayEquals(['foo', 'bar'], calls[3].getArguments());
 }
 
-
 function testGlobalEval() {
   goog.globalEval('var foofoofoo = 125;');
   assertEquals('Var should be globally assigned', 125, goog.global.foofoofoo);
@@ -1464,7 +1463,7 @@ function testLoadFileSync() {
 }
 
 
-function testNormalizePath() {
+function testNormalizePath1() {
   assertEquals('foo/path.js', goog.normalizePath_('./foo/./path.js'));
   assertEquals('foo/path.js', goog.normalizePath_('bar/../foo/path.js'));
   assertEquals('bar/path.js', goog.normalizePath_('bar/foo/../path.js'));
@@ -1486,12 +1485,9 @@ function testNormalizePath() {
   assertEquals('http://../x/y.js', goog.normalizePath_('http://../x/y.js'));
   assertEquals('http://path.js', goog.normalizePath_('http://foo/../path.js'));
   assertEquals('http://x/path.js', goog.normalizePath_('http://./x/path.js'));
-
-  var expected = '../../../../../../../javascript/apps/xid/xid.js';
-  var original = '../testing/../../../../../../../' +
-      'closure/goog/../apps/xid/xid.js';
-  assertEquals(expected, goog.normalizePath_(original));
 }
+
+
 
 
 function testGoogModuleNames() {

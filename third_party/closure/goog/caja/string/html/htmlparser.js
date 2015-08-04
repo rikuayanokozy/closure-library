@@ -64,7 +64,7 @@ goog.string.html.HtmlParser = function() {
 /**
  * HTML entities that are encoded/decoded.
  * TODO(user): use {@code goog.string.htmlEncode} instead.
- * @type {!Object.<string, string>}
+ * @type {!Object<string, string>}
  */
 goog.string.html.HtmlParser.Entities = {
   'lt': '<',
@@ -114,6 +114,7 @@ goog.string.html.HtmlParser.Elements = {
       goog.string.html.HtmlParser.EFlags.FOLDABLE,
   'br': goog.string.html.HtmlParser.EFlags.EMPTY,
   'button': 0,
+  'canvas': 0,
   'caption': 0,
   'center': 0,
   'cite': 0,
@@ -211,9 +212,9 @@ goog.string.html.HtmlParser.Elements = {
 /**
  * Regular expression that matches &s.
  * @type {RegExp}
- * @private
+ * @package
  */
-goog.string.html.HtmlParser.AMP_RE_ = /&/g;
+goog.string.html.HtmlParser.AMP_RE = /&/g;
 
 
 /**
@@ -228,33 +229,33 @@ goog.string.html.HtmlParser.LOOSE_AMP_RE_ =
 /**
  * Regular expression that matches <.
  * @type {RegExp}
- * @private
+ * @package
  */
-goog.string.html.HtmlParser.LT_RE_ = /</g;
+goog.string.html.HtmlParser.LT_RE = /</g;
 
 
 /**
  * Regular expression that matches >.
  * @type {RegExp}
- * @private
+ * @package
  */
-goog.string.html.HtmlParser.GT_RE_ = />/g;
+goog.string.html.HtmlParser.GT_RE = />/g;
 
 
 /**
  * Regular expression that matches ".
  * @type {RegExp}
- * @private
+ * @package
  */
-goog.string.html.HtmlParser.QUOTE_RE_ = /\"/g;
+goog.string.html.HtmlParser.QUOTE_RE = /\"/g;
 
 
 /**
  * Regular expression that matches =.
  * @type {RegExp}
- * @private
+ * @package
  */
-goog.string.html.HtmlParser.EQUALS_RE_ = /=/g;
+goog.string.html.HtmlParser.EQUALS_RE = /=/g;
 
 
 /**
@@ -531,8 +532,8 @@ goog.string.html.HtmlParser.prototype.unescapeEntities_ = function(s) {
 goog.string.html.HtmlParser.prototype.normalizeRCData_ = function(rcdata) {
   return rcdata.
       replace(goog.string.html.HtmlParser.LOOSE_AMP_RE_, '&amp;$1').
-      replace(goog.string.html.HtmlParser.LT_RE_, '&lt;').
-      replace(goog.string.html.HtmlParser.GT_RE_, '&gt;');
+      replace(goog.string.html.HtmlParser.LT_RE, '&lt;').
+      replace(goog.string.html.HtmlParser.GT_RE, '&gt;');
 };
 
 
@@ -569,7 +570,7 @@ goog.string.html.HtmlSaxHandler = function() {
 /**
  * Handler called when the parser found a new tag.
  * @param {string} name The name of the tag that is starting.
- * @param {Array.<string>} attributes The attributes of the tag.
+ * @param {Array<string>} attributes The attributes of the tag.
  */
 goog.string.html.HtmlSaxHandler.prototype.startTag = goog.abstractMethod;
 

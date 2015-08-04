@@ -171,7 +171,7 @@ goog.testing.TestCase.maxRunTime = 200;
  * techniques like tail cail optimization can affect the exact depth.
  * @private @const
  */
-goog.testing.TestCase.MAX_STACK_DEPTH_ = 100;
+goog.testing.TestCase.MAX_STACK_DEPTH_ = 50;
 
 
 /**
@@ -652,7 +652,7 @@ goog.testing.TestCase.prototype.runTests = function() {
 /**
  * Executes each of the tests, returning a promise that resolves with the
  * test results once they are done running.
- * @return {!IThenable.<!goog.testing.TestCase.Result>}
+ * @return {!IThenable<!goog.testing.TestCase.Result>}
  * @final
  * @package
  */
